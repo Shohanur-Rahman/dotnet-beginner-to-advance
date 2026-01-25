@@ -1,0 +1,31 @@
+﻿@model FirstWebApp.Models.Employee
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+<div>
+    <h4>Emploee</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">@Html.DisplayNameFor(Model => Model.Name)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(Model => Model.Name)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(Model => Model.Email)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(Model => Model.Email)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(Model => Model.Department)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(Model => Model.Department)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(Model => Model.Age)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(Model => Model.Age)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(Model => Model.Salary)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(Model => Model.Salary)</dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+</div>
