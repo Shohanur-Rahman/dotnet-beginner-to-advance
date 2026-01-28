@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using FirstWebApp.Data;
 using FirstWebApp.Models;
+using System.Net.Mail;
+using System.Net;
 
 namespace FirstWebApp.Controllers
 {
@@ -55,6 +57,9 @@ namespace FirstWebApp.Controllers
             {
                 _context.Add(student);
                 await _context.SaveChangesAsync();
+
+
+
                 return RedirectToAction(nameof(Index));
             }
             return View(student);

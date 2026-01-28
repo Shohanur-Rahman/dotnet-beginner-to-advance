@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using FirstWebApp.Data;
+using FirstWebApp.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<FirstWebAppContext>(options =>
@@ -7,6 +8,13 @@ builder.Services.AddDbContext<FirstWebAppContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Dependency Injection for IEmailService
+builder.Services.AddScoped<IEmailService, EmailService>();
+//
+builder.Services.AddTransient<IEmailService, EmailService>();
+//
+builder.Services.AddSingleton<IEmailService, EmailService>();
 
 var app = builder.Build();
 

@@ -1,7 +1,10 @@
 ﻿using FirstWebApp.Data;
 using FirstWebApp.Models;
+using FirstWebApp.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace FirstWebApp.Controllers
@@ -11,12 +14,15 @@ namespace FirstWebApp.Controllers
         private readonly ILogger<EmployeeController> _logger;
         private readonly FirstWebAppContext _dbContext;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IEmailService _emailService;
 
-        public EmployeeController(ILogger<EmployeeController> logger, FirstWebAppContext dbConxt, IWebHostEnvironment webHostEnvironment)
+        public EmployeeController(ILogger<EmployeeController> logger, FirstWebAppContext dbConxt
+            , IWebHostEnvironment webHostEnvironment, IEmailService emailService)
         {
             _logger = logger;
             _dbContext = dbConxt;
             _webHostEnvironment = webHostEnvironment;
+          _emailService = emailService;
         }
 
         public async Task<IActionResult> Index()
@@ -40,7 +46,7 @@ namespace FirstWebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult>  Create(Employee model)
+        public async Task<IActionResult> Create(Employee model)
         {
 
             if (ModelState.IsValid)
@@ -69,6 +75,9 @@ namespace FirstWebApp.Controllers
 
                 await _dbContext.Employee.AddAsync(model);
                 await _dbContext.SaveChangesAsync();
+
+                emailService.SendEmail();
+
                 return RedirectToAction("Index");
             }
             return View();
