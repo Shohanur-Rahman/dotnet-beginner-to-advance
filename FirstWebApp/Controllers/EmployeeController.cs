@@ -1,6 +1,7 @@
 ﻿using FirstWebApp.Data;
 using FirstWebApp.Models;
 using FirstWebApp.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
@@ -9,12 +10,14 @@ using System.Threading.Tasks;
 
 namespace FirstWebApp.Controllers
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly ILogger<EmployeeController> _logger;
         private readonly FirstWebAppContext _dbContext;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IEmailService _emailService;
+        //public EmailService EmailService { get; set; }
 
         public EmployeeController(ILogger<EmployeeController> logger, FirstWebAppContext dbConxt
             , IWebHostEnvironment webHostEnvironment, IEmailService emailService)
@@ -76,7 +79,7 @@ namespace FirstWebApp.Controllers
                 await _dbContext.Employee.AddAsync(model);
                 await _dbContext.SaveChangesAsync();
 
-                emailService.SendEmail();
+                _emailService.SendEmail();
 
                 return RedirectToAction("Index");
             }

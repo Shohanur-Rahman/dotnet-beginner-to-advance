@@ -29,7 +29,21 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
+
+app.Use(async (context, next) =>
+{
+    // Before request processing
+    if(context.Request.Path == "/Students")
+    {
+        context.Response.Redirect("/");
+    }
+    await next();
+    // After request processing
+});
+
+app.UseMiddleware<ProtectStudentMiddleware>();
 
 app.MapStaticAssets();
 
