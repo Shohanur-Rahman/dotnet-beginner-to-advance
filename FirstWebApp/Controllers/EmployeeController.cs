@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace FirstWebApp.Controllers
 {
-    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly ILogger<EmployeeController> _logger;

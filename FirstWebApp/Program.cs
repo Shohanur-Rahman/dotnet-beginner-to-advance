@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using FirstWebApp.Data;
 using FirstWebApp.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<FirstWebAppContext>(options =>
@@ -8,6 +9,17 @@ builder.Services.AddDbContext<FirstWebAppContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Account/login";
+        options.LogoutPath = "/Account/Logout";
+        options.ExpireTimeSpan = TimeSpan.FromDays(30);
+        options.SlidingExpiration = true;
+    });
+
+builder.Services.AddAuthorization();
 
 // Dependency Injection for IEmailService
 builder.Services.AddScoped<IEmailService, EmailService>();
@@ -29,23 +41,17 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
-app.UseAuthentication();
-app.UseAuthorization();
+app.UseAuthentication(); // Authenticate
 
-app.Use(async (context, next) =>
-{
-    // Before request processing
-    if(context.Request.Path == "/Students")
-    {
-        context.Response.Redirect("/");
-    }
-    await next();
-    // After request processing
-});
+app.UseAuthorization(); // Authorize
 
-app.UseMiddleware<ProtectStudentMiddleware>();
 
 app.MapStaticAssets();
+
+app.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
 
 app.MapControllerRoute(
     name: "default",
