@@ -2,3 +2,7 @@
 /FirstWebApp/bin
 /FirstWebApp/obj
 /FirstWebApp/*.user
+/JobFinderApplication/.vs
+/JobFinderApplication/JobFinderWebApp/bin/Debug/net10.0
+/JobFinderApplication/JobFinderWebApp/obj
+*.user
