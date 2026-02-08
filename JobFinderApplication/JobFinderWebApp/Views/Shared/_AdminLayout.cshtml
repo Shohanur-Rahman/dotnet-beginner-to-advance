@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/backend/vendors/ti-icons/css/themify-icons.css">
     <link rel="stylesheet" href="~/backend/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="~/backend/vendors/font-awesome/css/font-awesome.min.css">
+    <link href="//cdn.datatables.net/2.3.7/css/dataTables.dataTables.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/backend/css/style.css">
     <link rel="shortcut icon" href="~/backend/images/favicon.png" />
 </head>
@@ -175,6 +176,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" asp-action="" asp-controller="Todos" asp-area="Admin">
+                            <span class="menu-title">Todos</span>
+                            <i class="fa fa-tasks menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <span class="menu-title">Basic UI Elements</span>
                             <i class="menu-arrow"></i>
@@ -217,5 +224,8 @@
     <script src="~/backend/js/settings.js"></script>
     <script src="~/backend/js/todolist.js"></script>
     <script src="~/backend/js/jquery.cookie.js"></script>
+    <script src="//cdn.datatables.net/2.3.7/js/dataTables.min.js"></script>
+    <script src="~/backend/js/jobfinder-app.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
