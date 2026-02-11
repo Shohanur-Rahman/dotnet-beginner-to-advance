@@ -1,7 +1,7 @@
-﻿using JobFinderWebApp.Models;
+﻿using JobFinder.Entities.Todos.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace JobFinderWebApp.DB
+namespace JobFinder.Data.DB
 {
     public class JobFinderDbContext : DbContext
     {

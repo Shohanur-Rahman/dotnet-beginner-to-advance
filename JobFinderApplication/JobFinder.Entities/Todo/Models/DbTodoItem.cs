@@ -1,4 +1,4 @@
-﻿namespace JobFinderWebApp.Models
+﻿namespace JobFinder.Entities.Todos.Models
 {
     public class DbTodoItem
     {

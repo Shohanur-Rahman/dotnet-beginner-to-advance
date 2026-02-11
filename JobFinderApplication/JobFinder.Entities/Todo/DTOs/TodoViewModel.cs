@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace JobFinderWebApp.Models
+namespace JobFinder.Entities.Todos.DTOs
 {
     public class TodoViewModel
     {

@@ -1,5 +1,5 @@
-﻿using JobFinderWebApp.Models;
-using JobFinderWebApp.Repository.Interfaces;
+﻿using JobFinder.Business.Todo.Interfaces;
+using JobFinder.Entities.Todos.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,17 +8,17 @@ namespace JobFinderWebApp.Areas.Admin.Controllers
     [Area("Admin")]
     public class TodosController : Controller
     {
-        private readonly ITodoRepository _todoRepository;
+        private readonly ITodoService _todoService;
         private readonly ILogger<TodosController> _logger;
-        public TodosController(ITodoRepository todoRepository, ILogger<TodosController> logger)
+        public TodosController(ITodoService todoService, ILogger<TodosController> logger)
         {
-            _todoRepository = todoRepository;
+            _todoService = todoService;
             _logger = logger;
         }
         public async Task<IActionResult> Index()
         {
 
-            var todos = await _todoRepository.GetTodosAsync();
+            var todos = await _todoService.GetTodosAsync();
 
             return View(todos);
         }
@@ -42,7 +42,7 @@ namespace JobFinderWebApp.Areas.Admin.Controllers
 
             try
             {
-                var result = await _todoRepository.AddTodoAsync(model);
+                var result = await _todoService.AddTodoAsync(model);
 
                 _logger.LogInformation("Successfully created a new todo item with id: {Id}", result.Id);
                 return RedirectToAction("Index");
@@ -65,7 +65,7 @@ namespace JobFinderWebApp.Areas.Admin.Controllers
 
             try
             {
-                var todo = await _todoRepository.GetTodoByIdAsync(id);
+                var todo = await _todoService.GetTodoByIdAsync(id);
                 if (todo == null)
                 {
                     _logger.LogWarning("Todo item not found for editing with id: {Id}", id);

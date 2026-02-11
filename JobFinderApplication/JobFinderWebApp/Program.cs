@@ -1,6 +1,8 @@
-using JobFinderWebApp.DB;
-using JobFinderWebApp.Repository.Implementation;
-using JobFinderWebApp.Repository.Interfaces;
+using JobFinder.Business.Todo.Implementations;
+using JobFinder.Business.Todo.Interfaces;
+using JobFinder.Data.DB;
+using JobFinder.Data.Repositories.Todo.Implmentation;
+using JobFinder.Data.Repositories.Todo.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,7 @@ builder.Services.AddDbContext<JobFinderDbContext>(options =>
 });
 
 builder.Services.AddScoped<ITodoRepository, TodoRepository>();
+builder.Services.AddScoped<ITodoService, TodoService>();
 
 var app = builder.Build();
 
