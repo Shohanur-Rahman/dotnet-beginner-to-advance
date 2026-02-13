@@ -12,3 +12,5 @@
 /JobFinderApplication/JobFinder.Data/obj
 /JobFinderApplication/JobFinder.Entities/bin/Debug/net10.0
 /JobFinderApplication/JobFinder.Entities/obj
+/JobFinderApplication/JobFinder.WebApi/bin/Debug/net10.0
+/JobFinderApplication/JobFinder.WebApi/obj

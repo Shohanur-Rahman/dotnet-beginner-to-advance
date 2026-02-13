@@ -2,5 +2,6 @@
   <Project Path="JobFinder.Business/JobFinder.Business.csproj" Id="3bf1283b-244c-4cb1-b1f7-ae3a5575130b" />
   <Project Path="JobFinder.Data/JobFinder.Data.csproj" Id="56ee3ecc-01ec-4c3b-ae02-e7268dc6f9ef" />
   <Project Path="JobFinder.Entities/JobFinder.Entities.csproj" Id="7bcddbdb-47af-4ecf-80e7-c679be6cbd97" />
+  <Project Path="JobFinder.WebApi/JobFinder.WebApi.csproj" Id="becbc831-b6f0-4872-a5c9-0842cfd2a635" />
   <Project Path="JobFinderWebApp/JobFinderWebApp.csproj" />
 </Solution>
