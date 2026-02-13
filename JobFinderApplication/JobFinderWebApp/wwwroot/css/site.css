@@ -1,0 +1,9 @@
+
+
+.head-btn2 {
+    color: #fb246a !important;
+}
+
+    .head-btn1, .head-btn2:hover {
+        color: #fff !important;
+    }

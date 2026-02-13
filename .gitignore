@@ -2,3 +2,15 @@
 /FirstWebApp/bin
 /FirstWebApp/obj
 /FirstWebApp/*.user
+/JobFinderApplication/.vs
+/JobFinderApplication/JobFinderWebApp/bin/Debug/net10.0
+/JobFinderApplication/JobFinderWebApp/obj
+*.user
+/JobFinderApplication/JobFinder.Business/bin/Debug/net10.0
+/JobFinderApplication/JobFinder.Business/obj
+/JobFinderApplication/JobFinder.Data/bin/Debug/net10.0
+/JobFinderApplication/JobFinder.Data/obj
+/JobFinderApplication/JobFinder.Entities/bin/Debug/net10.0
+/JobFinderApplication/JobFinder.Entities/obj
+/JobFinderApplication/JobFinder.WebApi/bin/Debug/net10.0
+/JobFinderApplication/JobFinder.WebApi/obj

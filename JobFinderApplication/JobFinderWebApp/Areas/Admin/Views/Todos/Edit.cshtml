@@ -1,0 +1,51 @@
+﻿@model JobFinder.Entities.Todos.DTOs.TodoViewModel
+@{
+    ViewData["Title"] = "Edit Todo";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+
+            <form class="forms-sample" asp-action="Edit" asp-controller="Todos" asp-area="Admin">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="card-header">
+                    <h4 class="card-title mb-0">Add Todo</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input asp-for="Title" class="form-control" id="title" placeholder="Title">
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="details">Details</label>
+                                <input asp-for="Details" class="form-control" id="details" placeholder="Details">
+                                <span asp-validation-for="Details" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-light">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-gradient-primary">
+                        Submit
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FirstWebApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FirstWebApp.Data
 {
@@ -11,5 +12,6 @@ namespace FirstWebApp.Data
 
         public DbSet<FirstWebApp.Models.Student> Student { get; set; } = default!;
         public DbSet<FirstWebApp.Models.Employee> Employee { get; set; } = default!;
+        public DbSet<DbUser> Users { get; set; } = default!;
     }
 }
